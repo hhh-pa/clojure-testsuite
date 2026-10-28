@@ -36,6 +36,11 @@ jobs:
       - name: Build tools
         run: cargo build --release --manifest-path tools/Cargo.toml
 
+      - name: Check cold-cache runner run
+        run: |
+          rm -rf ~/.m2/repository
+          ./runners/single-exec/clojure tests/single-exec/00001.clj
+
       - name: Run single-exec suite (clojure)
         run: |
           ./single-exec clojure | tee clojure.tap

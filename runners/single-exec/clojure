@@ -12,6 +12,14 @@ cat $t
 
 set -x
 
+# A cold dependency cache makes the first run print "Downloading: ..."
+# progress to stderr; pre-resolve dependencies with output discarded so
+# that noise never lands in the captured test output.
+if ! find "$HOME/.m2/repository/org/clojure/clojure" -name 'clojure-*.jar' 2>/dev/null | grep -q .
+then
+    clojure -P -M "$t" > /dev/null 2>&1 || true
+fi
+
 scratchdir=$(mktemp -d)
 cleanup () {
   rm -rf "$scratchdir"
