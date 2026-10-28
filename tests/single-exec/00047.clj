@@ -1,0 +1,5 @@
+(def r (ref 0))
+(dosync (alter r + 10))
+(println @r)
+(dosync (ref-set r 1) (commute r + 2))
+(println @r)

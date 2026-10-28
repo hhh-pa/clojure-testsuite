@@ -1,0 +1,63 @@
+#! /bin/sh
+
+set -e
+set -u
+
+if ! test -f README.md
+then
+    echo "run from the base directory." >&2
+    exit 1
+fi
+
+impl="$1"
+
+scratchdir=$(mktemp -d)
+cleanup () {
+  rm -rf $scratchdir
+}
+trap cleanup EXIT
+
+testdir="./tests/single-exec"
+runner="./runners/single-exec/$impl"
+
+skipcmd="./runners/single-exec/$impl.skip"
+
+echo "TAP version 13"
+echo "1..$(find ./tests/single-exec/ -name "*.clj" | wc -l)"
+
+if ! test -f "$runner"
+then
+    echo "$runner does not exist!" 1>&2
+    exit 1
+fi
+
+if test -f "$skipcmd"
+then
+    if ! $skipcmd > "$scratchdir/skip.txt"
+    then
+        echo "skip list command failed" 1>&2
+        exit 1
+    fi
+else
+    : > "$scratchdir/skip.txt"
+fi
+
+for t in $testdir/*.clj
+do
+    result="ok"
+
+
+    if grep -qxF "$t" "$scratchdir/skip.txt"
+    then
+        echo "ok $t # SKIP"
+        continue
+    fi
+
+    if ! timeout 5m $runner $t > $scratchdir/t.out 2>&1
+    then
+        result="not ok"
+    fi
+
+    echo "$result" "$t"
+    sed -e 's/^/\#/' $scratchdir/t.out
+done

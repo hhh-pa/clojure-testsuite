@@ -1,0 +1,6 @@
+(println (keyword "a") (keyword "ns" "nm") :a/b)
+(println (symbol "x") (symbol "n" "s") 'y/z)
+(println (name :foo/bar) (namespace :foo/bar) (name 'a/b))
+(println (keyword? :k) (symbol? 's) (string? "s"))
+(println (ns-name *ns*))
+(println (resolve 'map))

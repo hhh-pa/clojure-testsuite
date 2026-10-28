@@ -1,0 +1,4 @@
+:zero 42
+[:one 1] [:two 1 2] [:many 1 2 (3 4)]
+hi a! hi b?
+([x] [x y] [x y & more])

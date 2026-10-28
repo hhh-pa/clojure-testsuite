@@ -1,0 +1,5 @@
+(println (sorted-map :b 2 :a 1))
+(println (sorted-set 3 1 2))
+(println (sorted-map-by > 1 :a 2 :b))
+(println (subseq (sorted-set 1 2 3 4) > 1 < 4))
+(println (rseq [1 2 3]))

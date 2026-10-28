@@ -1,0 +1,5 @@
+(println (try (+ 9223372036854775807 1) :no-throw (catch ArithmeticException e :overflow)))
+(println (+' 9223372036854775807 1))
+(println (*' 1000000 1000000 1000000 1000000))
+(println (bigint "123456789012345678901234567890"))
+(println (bigdec "3.14"))

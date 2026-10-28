@@ -1,0 +1,8 @@
+(defn f0 [] :zero)
+(defn f1 [x] x)
+(defn f2 ([x] [:one x]) ([x y] [:two x y]) ([x y & more] [:many x y more]))
+(println (f0) (f1 42))
+(println (f2 1) (f2 1 2) (f2 1 2 3 4))
+(defn greet [name & {:keys [punct] :or {punct "!"} }] (str "hi " name punct))
+(println (greet "a") (greet "b" :punct "?"))
+(println (:arglists (meta #'f2)))

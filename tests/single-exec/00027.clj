@@ -1,0 +1,8 @@
+(defmacro my-when [test & body] `(if ~test (do ~@body)))
+(println (my-when true 1 2))
+(println (my-when nil 1 2))
+(println (-> 1 (+ 10) (* 2) (- 5)))
+(println (->> 3 (+ 10) (* 2) (- 100)))
+(println (macroexpand-1 '(my-when true 1)))
+(println (as-> [1 2 3] x (map inc x) (filter odd? x)))
+(println (cond-> 0 true inc false (* 100) true (+ 10)))

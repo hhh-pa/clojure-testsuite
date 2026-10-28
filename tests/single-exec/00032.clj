@@ -1,0 +1,8 @@
+(println (pr-str (with-out-str (print "a") (print "b"))))
+(print (with-out-str (println "x") (prn [1 2])))
+(def ^:dynamic *d* 1)
+(println *d*)
+(binding [*d* 2] (println *d*))
+(println *d*)
+(binding [*out* *err*] (println "to stderr"))
+(println "to stdout")

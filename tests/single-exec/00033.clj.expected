@@ -1,0 +1,6 @@
+:a :ns/nm :a/b
+x n/s y/z
+bar foo b
+true true true
+user
+#'clojure.core/map

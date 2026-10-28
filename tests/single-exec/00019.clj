@@ -1,0 +1,8 @@
+(defn adder [n] (fn [x] (+ n x)))
+(def add5 (adder 5))
+(println (add5 10) ((adder 100) 1))
+(let [x 1 y 2] (println (+ x y)))
+(let [x 1 x (inc x) x (* x 10)] (println x))
+(let [[a b] [1 2] [c & d] [3 4 5]] (println a b c d))
+(let [{:keys [p q] :or {q 9}} {:p 7}] (println p q))
+(doseq [f (map (fn [i] (fn [] i)) (range 3))] (println (f)))

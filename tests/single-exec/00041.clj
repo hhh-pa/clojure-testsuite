@@ -1,0 +1,5 @@
+(println (.toUpperCase "hello"))
+(println (String/join ", " ["a" "b"]))
+(let [sb (StringBuilder.)] (.append sb "x") (.append sb 42) (println (str sb)))
+(println (Math/abs -5) (Math/max 3 7) (Math/pow 2 10))
+(println (str (java.util.UUID/fromString "123e4567-e89b-12d3-a456-426614174000")))

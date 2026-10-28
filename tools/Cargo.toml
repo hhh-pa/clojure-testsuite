@@ -1,0 +1,20 @@
+[package]
+name = "clojure-testsuite-tools"
+version = "0.1.0"
+edition = "2021"
+
+[[bin]]
+name = "search-tests"
+path = "src/bin/search_tests.rs"
+
+[[bin]]
+name = "tapsummary"
+path = "src/bin/tapsummary.rs"
+
+[[bin]]
+name = "htmlescape"
+path = "src/bin/htmlescape.rs"
+
+[[bin]]
+name = "add-single-exec"
+path = "src/bin/add_single_exec.rs"

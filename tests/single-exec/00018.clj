@@ -1,0 +1,7 @@
+(println ((fn [x] (* x x)) 9))
+(println (#(* %1 %2) 6 7))
+(println (#(vector %3 %2 %1) :a :b :c))
+(println (apply + [1 2 3]) (apply vector 0 [1 2]))
+(println ((partial + 10) 5) ((comp inc inc) 0))
+(println ((juxt :a :b) {:a 1 :b 2}) ((complement even?) 3))
+(println (map #(* % %) [1 2 3 4]))

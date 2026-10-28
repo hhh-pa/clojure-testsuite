@@ -1,0 +1,6 @@
+(println [1 2 3])
+(println (conj [1 2] 3 4))
+(println (assoc [1 2 3] 1 :b))
+(println (pop [1 2 3]) (peek [1 2 3]))
+(println (get [10 20 30] 1) (get [10 20] 5 :missing))
+(println (nth [10 20 30] 2) (count [1 2]) (empty? []) (first [1 2]) (rest [1 2]) (last [1 2]))

@@ -1,0 +1,6 @@
+(def v (with-meta [1 2] {:tag :t}))
+(println (meta v))
+(println (meta (vary-meta v assoc :b 2)))
+(def ^:private pv 42)
+(println (:private (meta #'pv)))
+(println (meta 'x) (meta "s"))

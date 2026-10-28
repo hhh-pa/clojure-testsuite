@@ -1,0 +1,56 @@
+name: ci
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  single-exec:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+
+      - name: Install Clojure CLI
+        run: |
+          curl -L -O https://github.com/clojure/brew-install/releases/download/1.12.6.1673/linux-install.sh
+          chmod +x linux-install.sh
+          sudo ./linux-install.sh
+          clojure --version
+
+      - name: Install Babashka
+        run: |
+          curl -sL -O https://github.com/babashka/babashka/releases/download/v1.13.229/babashka-1.13.229-linux-amd64-static.tar.gz
+          tar xzf babashka-1.13.229-linux-amd64-static.tar.gz
+          sudo mv bb /usr/local/bin/bb
+          bb --version
+
+      - name: Install Rust
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Build tools
+        run: cargo build --release --manifest-path tools/Cargo.toml
+
+      - name: Run single-exec suite (clojure)
+        run: |
+          ./single-exec clojure | tee clojure.tap
+          ./scripts/tapsummary < clojure.tap
+          if grep -q '^not ok' clojure.tap; then echo "clojure runner had failures" >&2; exit 1; fi
+
+      - name: Run single-exec suite (babashka)
+        run: |
+          ./single-exec babashka | tee babashka.tap
+          ./scripts/tapsummary < babashka.tap
+          if grep -q '^not ok' babashka.tap; then echo "babashka runner had failures" >&2; exit 1; fi
+
+      - name: Check search queries
+        run: |
+          ./scripts/search-tests "portable" | head -n 5
+          ./scripts/search-tests "suite=single-exec" | wc -l
+          ./scripts/search-tests "not (jvm or portable)"
+          ./scripts/search-tests "needs-java-interop"

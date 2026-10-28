@@ -1,0 +1,6 @@
+(require '[clojure.string :as s])
+(println (s/join ", " [1 2 3]))
+(prn (s/split "a,b,c" #","))
+(println (s/upper-case "abc") (s/lower-case "AbC") (s/trim "  x  "))
+(println (s/reverse "stressed") (s/replace "aaa" "a" "b"))
+(println (s/starts-with? "hello" "he") (s/ends-with? "hello" "lo") (s/includes? "hello" "ell"))

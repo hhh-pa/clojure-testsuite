@@ -1,0 +1,7 @@
+(require '[clojure.set :as set])
+(println (sort (merge {:a 1} {:b 2} {:a 3})))
+(println (sort (merge-with + {:a 1 :b 1} {:a 2})))
+(println (sort (update {:a 1} :a inc)))
+(println (sort (update {:a 1} :missing (fnil inc 0))))
+(println (sort (select-keys {:a 1 :b 2 :c 3} [:a :c])))
+(println (sort (set/rename-keys {:a 1} {:a :z})))

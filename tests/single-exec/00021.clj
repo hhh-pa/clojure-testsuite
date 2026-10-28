@@ -1,0 +1,8 @@
+(println (if true :t :f) (if nil :t :f) (if false :t :f) (if 0 :t :f) (if "" :t :f))
+(println (when true 1 2) (when-not nil :yes))
+(println (if-not false :a :b))
+(println (cond (= 1 2) :no (= 2 2) :yes :else :dflt))
+(println (case 2 1 :one 2 :two :other))
+(println (and 1 2 false 3) (or nil false 0 :x))
+(println (if-let [x 5] (inc x) :none) (if-let [x nil] x :none))
+(println (when-let [x nil] x) (when-first [x [1 2]] x))

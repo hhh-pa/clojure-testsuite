@@ -1,0 +1,8 @@
+(def naturals (iterate inc 1))
+(println (take 5 naturals))
+(println (nth naturals 99))
+(def fibs (map first (iterate (fn [[a b]] [b (+ a b)]) [0 1])))
+(println (take 10 fibs))
+(println (take 3 (repeat :x)) (take 2 (cycle [1 2])) (take 3 (range)))
+(println (doall (map inc [1 2])))
+(println (realized? (delay 1)))

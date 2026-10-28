@@ -1,0 +1,5 @@
+(println (re-find #"\d+" "abc123def"))
+(println (re-matches #"[a-z]+" "hello"))
+(println (re-matches #"[a-z]+" "hello1"))
+(prn (re-seq #"\w+" "a bb ccc"))
+(println (clojure.string/replace "a1b2" #"\d" "#"))

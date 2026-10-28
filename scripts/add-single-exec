@@ -1,0 +1,12 @@
+#! /bin/sh
+# Shim for the Rust tool; builds it on first use.
+set -e
+set -u
+root=$(cd "$(dirname "$0")/.." && pwd)
+name="add-single-exec"
+bin="$root/tools/target/release/$name"
+if ! test -x "$bin"
+then
+    cargo build --release --manifest-path "$root/tools/Cargo.toml" --bin "$name" >&2
+fi
+exec "$bin" "$@"

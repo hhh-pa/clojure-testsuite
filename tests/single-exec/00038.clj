@@ -1,0 +1,6 @@
+(println (map inc nil) (filter odd? nil) (count nil))
+(println (take 5 [1 2]) (drop 5 [1 2]))
+(println (nth [1 2 3] 10 :dflt))
+(println (get nil :k) (get nil :k :d))
+(println (into [] (range 5)) (into {} [[:a 1]]) (into #{} [1 1 2]))
+(prn (vec "abc") (set [1 2 2]) (sort (seq {:b 2 :a 1})))

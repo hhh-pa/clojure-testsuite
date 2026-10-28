@@ -1,0 +1,5 @@
+(print "a" "b")
+(println)
+(pr "x" "y")
+(newline)
+(prn [1 "two" :three])

@@ -1,0 +1,8 @@
+(def calls (atom 0))
+(def d (delay (swap! calls inc) 42))
+(println (realized? d) @calls)
+(println @d)
+(println (realized? d) @calls @d)
+(println (force 7) (force (delay 8)))
+(def f (memoize (fn [x] (swap! calls inc) (* x 10))))
+(println (f 1) (f 1) (f 2) @calls)

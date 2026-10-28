@@ -1,0 +1,8 @@
+(defprotocol P (greet [this] [this punct]))
+(defrecord Person [name] P (greet [this] (str "hi " name)) (greet [this punct] (str "hi " name punct)))
+(def p (->Person "ann"))
+(println (greet p) (greet p "?"))
+(println (:name p) (map? p))
+(prn (assoc p :age 3))
+(println (sort (keys p)))
+(println (instance? Person p))

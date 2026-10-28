@@ -1,0 +1,7 @@
+(def m {:b 2 :a 1 :c 3})
+(println (sort m))
+(println (get m :a) (get m :zzz :dflt) (:b m) (m :c))
+(println (sort (assoc m :d 4)))
+(println (sort (dissoc m :b)))
+(println (sort (keys m)) (sort (vals m)))
+(println (contains? m :a) (find m :c) (count m))

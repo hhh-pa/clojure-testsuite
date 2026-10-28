@@ -1,0 +1,8 @@
+(def ag (agent 0))
+(send ag + 5)
+(await ag)
+(println @ag)
+(send ag inc)
+(await ag)
+(println @ag)
+(shutdown-agents)

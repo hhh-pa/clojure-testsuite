@@ -1,0 +1,5 @@
+(println '(1 2 3))
+(println (conj '(2 3) 1))
+(println (seq [1 2]) (seq []) (seq nil))
+(println (first nil) (rest nil) (next [1]) (next [1 2]))
+(println (cons 0 [1 2]) (concat [1] [2 3]) (map inc [1 2 3]))

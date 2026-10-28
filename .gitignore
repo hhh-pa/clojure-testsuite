@@ -1,0 +1,4 @@
+.cpcache/
+*.output
+*.tap
+/tools/target/

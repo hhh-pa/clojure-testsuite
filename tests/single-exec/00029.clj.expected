@@ -1,0 +1,5 @@
+dog named rex
+cat named tom
+unknown :fish
+(:cat :default :dog)
+true false

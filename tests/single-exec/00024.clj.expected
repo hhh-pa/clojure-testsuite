@@ -1,0 +1,5 @@
+:caught
+{:code 7}
+:body
+[:caught :finally]
+1
