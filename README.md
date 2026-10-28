@@ -70,7 +70,7 @@ All tests have a matching $t.tags file. This file specifies attributes
 of the test that can be filtered and queried.
 
 Unlike c-testsuite, no third party index is needed: ```./scripts/search-tests```
-is a small Rust tool (see ```tools/```, built automatically on first use)
+is a small Rust tool (see ```tools/```, built automatically when missing or out of date)
 that reads the .tags files directly, so there is no index to build.
 
 The query language supports ```and```, ```or``` and ```not``` (whitespace
@@ -135,8 +135,8 @@ matching .expected file.
 
 The helper tools (```search-tests```, ```tapsummary```, ```htmlescape```,
 ```add-single-exec```) are implemented in Rust under ```tools/``` with no
-external dependencies; the ```scripts/``` entry points build them on first
-use, or run ```cargo build --release``` in ```tools/``` explicitly.
+external dependencies; the ```scripts/``` entry points build them when missing
+or out of date (or run ```cargo build --release``` in ```tools/``` explicitly).
 
 Guidelines for portable tests:
 

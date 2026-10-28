@@ -28,14 +28,14 @@ runner="./runners/single-exec/$impl"
 
 skipcmd="./runners/single-exec/$impl.skip"
 
-echo "TAP version 13"
-echo "1..$(find ./tests/single-exec/ -name "*.clj" | wc -l)"
-
 if ! test -f "$runner"
 then
     echo "$runner does not exist!" 1>&2
     exit 1
 fi
+
+echo "TAP version 13"
+echo "1..$(find ./tests/single-exec/ -name "*.clj" | wc -l)"
 
 if test -f "$skipcmd"
 then

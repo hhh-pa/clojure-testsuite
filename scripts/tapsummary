@@ -1,11 +1,14 @@
 #! /bin/sh
-# Shim for the Rust tool; builds it on first use.
+# Shim for the Rust tool; builds it when missing or out of date.
 set -e
 set -u
 root=$(cd "$(dirname "$0")/.." && pwd)
 name="tapsummary"
 bin="$root/tools/target/release/$name"
-if ! test -x "$bin"
+# Rebuild when missing or older than the sources, so edits under tools/
+# take effect without a manual build; a fresh tree needs no cargo run.
+# (Each tool is one standalone file; widen this if that ever changes.)
+if ! test -x "$bin" || test -n "$(find "$root/tools/src/bin/tapsummary.rs" "$root/tools/Cargo.toml" "$root/tools/Cargo.lock" -newer "$bin" 2>/dev/null)"
 then
     cargo build --release --manifest-path "$root/tools/Cargo.toml" --bin "$name" >&2
 fi
