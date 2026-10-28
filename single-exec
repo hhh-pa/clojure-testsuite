@@ -9,6 +9,12 @@ then
     exit 1
 fi
 
+if test "$#" -ne 1
+then
+    echo "usage: ./single-exec <impl>" >&2
+    exit 1
+fi
+
 impl="$1"
 
 scratchdir=$(mktemp -d)

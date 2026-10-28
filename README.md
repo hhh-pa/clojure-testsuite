@@ -25,7 +25,7 @@ entry point is ```./single-exec```
 The runner will be invoked as:
 
 ```
-$ ./runners/single-exec/$NAME tests/single-exec/case.clj
+$ ./runners/single-exec/$NAME ./tests/single-exec/case.clj
 ```
 
 The runner is free to output any data it wants, but must return

@@ -11,7 +11,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Set up Java
-        uses: actions/setup-java@v4
+        uses: actions/setup-java@v5
         with:
           distribution: temurin
           java-version: '21'
@@ -55,7 +55,16 @@ jobs:
 
       - name: Check search queries
         run: |
-          ./scripts/search-tests "portable" | head -n 5
-          ./scripts/search-tests "suite=single-exec" | wc -l
-          ./scripts/search-tests "not (jvm or portable)"
-          ./scripts/search-tests "needs-java-interop"
+          test "$(./scripts/search-tests "suite=single-exec" | grep -c .)" -eq 83
+          test "$(./scripts/search-tests "portable" | grep -c .)" -eq 70
+          test "$(./scripts/search-tests "needs-java-interop" | grep -c .)" -eq 5
+          test "$(./scripts/search-tests "needs-io" | grep -c .)" -eq 1
+          test "$(./scripts/search-tests "needs-threads" | grep -c .)" -eq 6
+          test -z "$(./runners/single-exec/clojure.skip)"
+          ./runners/single-exec/babashka.skip | sort > /tmp/bb-skip.txt
+          printf '%s\n' \
+            ./tests/single-exec/00042.clj \
+            ./tests/single-exec/00045.clj \
+            ./tests/single-exec/00051.clj \
+            ./tests/single-exec/00082.clj > /tmp/bb-skip-expected.txt
+          diff /tmp/bb-skip-expected.txt /tmp/bb-skip.txt
