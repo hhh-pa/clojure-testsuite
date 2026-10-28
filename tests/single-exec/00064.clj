@@ -1,0 +1,6 @@
+(def ^:dynamic *v64* :root)
+(println (binding [*v64* :bound] @(future *v64*)))
+(def p64 (promise))
+(deliver p64 :first)
+(println (deliver p64 :second))
+(println @p64 (realized? p64))

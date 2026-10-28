@@ -1,0 +1,4 @@
+[false false true]
+nil false
+[##NaN ##Inf ##-Inf]
+true -0.0

@@ -1,0 +1,8 @@
+nil
+:thrown
+[] (2 1)
+nil [] {}
+b nil
+b :d
+(1 2) nil
+(1 2 3) ()

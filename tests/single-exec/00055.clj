@@ -1,0 +1,7 @@
+(println (= [1 2] '(1 2)))
+(println (= '(1 2) (seq [1 2])))
+(println (= {:a 1} (sorted-map :a 1)))
+(println (= (with-meta [1] {:x 1}) [1]))
+(defrecord EqRec [a])
+(println (= (->EqRec 1) {:a 1}))
+(println ({1 :long} 1.0) ({1.0 :double} 1))

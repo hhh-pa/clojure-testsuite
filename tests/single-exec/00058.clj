@@ -1,0 +1,8 @@
+(println (apply = (rest `(x# x#))))
+(println (= (first `(x#)) (first `(x#))))
+(println `(a ~@[1 2] ~@nil))
+(println (macroexpand '(.. a b c)))
+(println (try (#(vector %3) 1) :no-throw (catch Exception e :thrown)))
+(println (+ 1 #_trash 2))
+(println (= \a \o141))
+(println (= 0xFF 255) (= 2r101 5) (= 8r17 15) (= 1e3 1000.0))

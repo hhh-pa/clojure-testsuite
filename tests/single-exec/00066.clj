@@ -1,0 +1,6 @@
+(def r66 (ref 1 :validator pos?))
+(println (try (dosync (alter r66 - 5)) :no-throw (catch IllegalStateException e :rolled-back)))
+(println @r66)
+(def a66 (atom 0 :validator even?))
+(println (try (swap! a66 inc) :no-throw (catch IllegalStateException e :rejected)))
+(println @a66)

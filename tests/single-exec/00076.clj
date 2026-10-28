@@ -1,0 +1,5 @@
+(println (let [{:keys [a] :or {a :dflt}} {}] a))
+(println (let [{:keys [a] :or {a :dflt}} {:a nil}] a))
+(println (try (let [[e] {:a 1}] e) :bound (catch Exception e :thrown)))
+(println (let [{:strs [s]} {"s" 1}] s) (let [{:syms [y]} {'y 2}] y))
+(println (let [{:keys [a] :n/keys [b]} {:a 1 :n/b 2}] [a b]))

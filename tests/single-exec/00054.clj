@@ -1,0 +1,6 @@
+(println (numerator (/ 7 2)) (denominator (/ 7 2)))
+(println (try (numerator 5) :no-throw (catch Exception e :thrown)))
+(println (int 3.9) (long 3.9))
+(println (inst-ms #inst "1970-01-01T00:00:01Z"))
+(println (rational? 1.5) (float? 1) (decimal? 1.5M))
+(println (abs -5))

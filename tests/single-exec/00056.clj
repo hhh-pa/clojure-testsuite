@@ -1,0 +1,8 @@
+(println (pop nil))
+(println (try (pop []) :no-throw (catch Exception e :thrown)))
+(println (conj) (into nil [1 2]))
+(println (empty "str") (empty [1]) (empty {:a 1}))
+(println (get "abc" 1) (get '(1 2) 0))
+(println (nth "abc" 1) (nth "abc" 9 :d))
+(println (butlast [1 2 3]) (butlast [1]))
+(println (flatten [1 [2 [3]]]) (flatten nil))

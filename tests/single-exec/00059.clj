@@ -1,0 +1,5 @@
+(println (inst? #inst "2020-01-01") (uuid? #uuid "123e4567-e89b-12d3-a456-426614174000"))
+(println (= #inst "2020-01-01" #inst "2020-01-01T00:00:00.000-00:00"))
+(println (read-string "#=(+ 1 2)"))
+(println (binding [*read-eval* false] (try (read-string "#=(+ 1 2)") :read (catch Exception e :blocked))))
+(println (with-in-str "a 42" [(read) (read)]))

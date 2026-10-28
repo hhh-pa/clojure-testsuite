@@ -1,0 +1,11 @@
+;; map/filter/for produce chunked seqs: realizing one element realizes 32.
+(def c78 (atom 0))
+(def s78 (map (fn [x] (swap! c78 inc) x) (range 100)))
+(first s78)
+(println @c78)
+(def c78b (atom 0))
+(doall (take 5 (map (fn [x] (swap! c78b inc) x) (range 100))))
+(println @c78b)
+(def c78c (atom 0))
+(first (for [x (range 100)] (do (swap! c78c inc) x)))
+(println @c78c)

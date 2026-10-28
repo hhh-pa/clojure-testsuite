@@ -1,0 +1,8 @@
+(def c79 (atom 0))
+(def s79 (map (fn [x] (swap! c79 inc) x) [1 2 3]))
+(println @c79)
+(println (vec s79) @c79)
+(def c79b (atom 0))
+(mapv (fn [x] (swap! c79b inc) x) (range 10))
+(println @c79b)
+(println (dorun (map inc [1 2])))

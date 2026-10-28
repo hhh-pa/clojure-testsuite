@@ -1,0 +1,12 @@
+(println (transduce (comp (map inc) (filter odd?)) + [1 2 3 4]))
+(println (transduce (map inc) (completing +) 100 [1 2]))
+;; halt-when completes with the triggering input by default, not the result.
+(println (transduce (halt-when odd?) + [2 4 5 6]))
+(println (sequence cat [[1] [2 3]]))
+(println (sequence (comp (map inc) (take 2)) [10 20 30]))
+(println (seq (eduction (map inc) [1 2])))
+(println (reduce (fn [a x] (if (> x 2) (reduced :stop) (+ a x))) 0 [1 2 3 4]))
+(println (reduced? (reduced 1)) (reduced? 1) (unreduced (reduced 1)))
+(println (reduced? (ensure-reduced 5)) (unreduced (ensure-reduced 5)))
+(println (vec (iteration (fn [k] (when (< k 3) (inc k))) :initk 0)))
+(println (vec (iteration (fn [k] (when (< k 3) (inc k))) :initk 0 :vf #(* % 10))))

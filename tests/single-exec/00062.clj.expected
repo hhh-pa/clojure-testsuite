@@ -1,0 +1,7 @@
+:was-nil :was-str
+true false
+true
+false
+custom!
+("A")
+:was-obj

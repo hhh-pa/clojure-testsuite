@@ -1,0 +1,5 @@
+(println (binding [*print-length* 2] (pr-str [1 2 3 4])))
+(println (binding [*print-level* 1] (pr-str [[1] [2]])))
+(println (binding [*print-meta* true] (pr-str (with-meta [1] {:a 1}))))
+(prn (seq "ab") (first "xy"))
+(println (apply str [\a \b]))

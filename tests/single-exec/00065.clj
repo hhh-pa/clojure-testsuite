@@ -1,0 +1,5 @@
+(def v65 (volatile! 1))
+(println @v65)
+(println (vswap! v65 + 5))
+(println @v65)
+(println (vreset! v65 9) @v65)

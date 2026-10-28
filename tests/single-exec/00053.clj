@@ -1,0 +1,7 @@
+(println (quot -7 2) (rem -7 2))
+(println (unchecked-add 9223372036854775807 1))
+(println (unchecked-int 2147483648))
+(println (try (even? 2.0) :no-throw (catch Exception e :thrown)))
+(println (try (even? 2.5) :no-throw (catch Exception e :thrown)))
+(println (== (float 0.1) 0.1))
+(println (ratio? (+ 1/2 1)) (float? (+ 1/2 0.5)) (integer? (* 2 1/2)))
